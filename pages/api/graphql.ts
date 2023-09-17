@@ -1,10 +1,9 @@
 import { ApolloServer, gql } from 'apollo-server-micro';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-const users = [
-    { id: 1, name: 'John Doe', email: 'john@test.com' },
-    { id: 2, name: 'Jane Doe', email: 'jane@example.com' },
-];
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 const typeDefs = gql`
   type User {
@@ -19,16 +18,29 @@ const typeDefs = gql`
   }
 `;
 
+// リゾルバ内でPrismaClientを使うためのコンテキストを定義
+interface Context {
+    prisma: PrismaClient;
+}
+
+// 実際にクエリの処理を行う
+// リゾルバの関数はparent, args, context, infoの4つの引数を受け取れる
 const resolvers = {
     Query: {
         hello: () => 'Hello World',
-        users: () => users,
+        users: async (parent: undefined, args: {}, context: Context) => {
+            return await context.prisma.user.findMany(); // SQLの'SELECT * FROM User;' に相当
+        },
     },
 };
 
 const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
+    // ApolloServerをインスタンス化する際にPrismaClientをコンテキストに渡す
+    context: {
+        prisma,
+    },
 });
 
 const startServer = apolloServer.start();
