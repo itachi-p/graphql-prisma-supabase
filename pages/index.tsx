@@ -26,7 +26,7 @@ const Home: NextPage = () => {
     if (error) return <p>Error: {error.message}</p>;
 
     const { users } = data;
-    
+
     return (
         <div className='container'>
             <Head>
@@ -40,9 +40,15 @@ const Home: NextPage = () => {
                 <h2 className="mt-3 text-xl font-semibold text-slate-500">GraphQL & DB接続 & TailWind CSSお試し</h2>
                 <h3 className="mt-5 text-2xl font-semibold underline">ユーザ情報</h3>
                 {users.map((user: { id: number, name: string; email: string }) => (
-                    <ul className='list-disc list-inside' key={user.id}>
-                        <li className="mt-5 text-medium">
-                            <span className='mr-5'>Name: {user.name}</span>
+                    <ul className='list-disc list-inside space-y-4' key={user.id}>
+                        <li className="mt-5 ml-20 text-medium flex items-center">
+                            <svg className="h-6 w-6 flex-none fill-sky-100 stroke-sky-300 stroke-2">
+                                <circle cx="12" cy="12" r="8" />
+                            </svg>
+                            <span className='mr-5 text-gray-600 hover:text-red-400'>Name: {user.name}</span>
+                            <svg className="h-6 w-6 flex-none fill-lightblue-100 stroke-sky-300 stroke-2">
+                                <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
+                            </svg>
                             <span className='text-blue-700'>Email: {user.email}</span>
                         </li>
                     </ul>
