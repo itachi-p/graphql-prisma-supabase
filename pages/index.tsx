@@ -1,8 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-// TailWindCSSをインポート
+import Link from 'next/link'
 import 'tailwindcss/tailwind.css'
-// import styles from '../styles/Home.module.css'
 
 // ApolloClientが提供するuseQuery Hookを利用することでデータの取得状態やエラー情報を取得する
 import { gql, useQuery } from '@apollo/client';
@@ -37,13 +36,14 @@ const Home: NextPage = () => {
 
             <main className='text-center'>
                 <h1 className="mt-5 text-3xl font-bold text-green-700">GraphQL-Prisma-Supabase(Postgres)</h1>
-                <h2 className="mt-3 text-xl font-semibold text-slate-500">GraphQL & DB接続 & TailWind CSSお試し</h2>
+                <h2 className="mt-3 text-xl font-semibold text-slate-500">GraphQL & DB接続 & Tailwind CSSお試し</h2>
                 <h3 className="mt-5 text-2xl font-semibold underline">ユーザ情報</h3>
+                <h4 className="mt-2 text-md text-amber-600">※DBデータ項目・件数追加予定</h4>
                 {users.map((user: { id: number, name: string; email: string }) => (
-                    <ul className='list-disc list-inside space-y-4' key={user.id}>
+                    <ul className='list-disc list-inside space-y-4 odd:bg-lime-200 even:bg-indigo-200' key={user.id}>
                         <li className="mt-5 ml-20 text-medium flex items-center">
                             <svg className="h-6 w-6 flex-none fill-sky-100 stroke-sky-300 stroke-2">
-                                <circle cx="12" cy="12" r="8" />
+                                <circle cx="12" cy="12" r="7" />
                             </svg>
                             <span className='mr-5 text-gray-600 hover:text-red-400'>Name: {user.name}</span>
                             <svg className="h-6 w-6 flex-none fill-lightblue-100 stroke-sky-300 stroke-2">
@@ -54,6 +54,12 @@ const Home: NextPage = () => {
                     </ul>
                 ))}
             </main>
+            <hr />
+            <footer className='mt-20 text-center'>
+                <Link href='https://nextjs-testapp02-blog.netlify.app/' className='text-sky-500 hover:text-indigo-600'>
+                    itachi-p's Blog(仮)
+                </Link>
+            </footer>
         </div>
     );
 };
