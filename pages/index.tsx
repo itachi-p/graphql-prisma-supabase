@@ -40,13 +40,13 @@ const Home: NextPage = () => {
                 <h3 className="mt-5 text-2xl font-semibold underline">ユーザ情報</h3>
                 <h4 className="mt-2 text-md text-amber-600">※DBデータ項目・件数追加予定</h4>
                 {users.map((user: { id: number, name: string; email: string }) => (
-                    <ul className='list-disc list-inside space-y-4 odd:bg-lime-200 even:bg-indigo-200' key={user.id}>
-                        <li className="mt-5 ml-20 text-medium flex items-center">
+                    <ul className='ml-20 list-disc list-inside space-y-4 odd:bg-lime-200 even:bg-indigo-200' key={user.id}>
+                        <li className="mt-5 ml-5 text-medium flex items-center">
                             <svg className="h-6 w-6 flex-none fill-sky-100 stroke-sky-300 stroke-2">
                                 <circle cx="12" cy="12" r="7" />
                             </svg>
                             <span className='mr-5 text-gray-600 hover:text-red-400'>Name: {user.name}</span>
-                            <svg className="h-6 w-6 flex-none fill-lightblue-100 stroke-sky-300 stroke-2">
+                            <svg className="ml-5 h-6 w-6 flex-none fill-lightblue-100 stroke-sky-300 stroke-2">
                                 <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
                             </svg>
                             <span className='text-blue-700'>Email: {user.email}</span>
@@ -54,11 +54,43 @@ const Home: NextPage = () => {
                     </ul>
                 ))}
             </main>
-            <hr />
-            <footer className='mt-20 text-center'>
-                <Link href='https://nextjs-testapp02-blog.netlify.app/' className='text-sky-500 hover:text-indigo-600'>
-                    itachi-p's Blog(仮)
-                </Link>
+
+            <section className='mt-20 ml-20'>
+                <p className='text-2xl text-indigo-500'>このページでの使用技術</p>
+                <div className='md:flex'>
+                    <div className='rounded border bg-lime-300 p-1'>Next.js</div>
+                    <div className='rounded border bg-lime-300 p-1'>TypeScript</div>
+                    <div className='rounded border bg-lime-300 p-1'>Tailwind CSS</div>
+                    <div className='rounded border bg-amber-300 p-1'>Apollo-server</div>
+                    <div className='rounded border bg-amber-300 p-1'>GraphQL</div>
+                    <div className='rounded border bg-amber-300 p-1'>Prisma(ORM)</div>
+                    <div className='rounded border bg-lime-300 p-1'>Supabase(Postgres)</div>
+                </div>
+
+                <p className='mt-5 text-2xl text-sky-600'>今後の実装予定<span className='text-slate-300'>(は未定)</span></p>
+                <ul className='list-disc bg-amber-100'>
+                    <li className='odd:bg-slate-300 even:bg-amber-200'>Database(Supabase Postgres)へのデータ追加</li>
+                    <ol className='ml-5 list-decimal list-inside'>
+                        <li>件数追加&rarr;
+                            <span className='text-orange-500'>ページング機能実装</span>
+                            </li>
+                        <li>項目追加(RESTとの比較:オーバーフェッチ)</li>
+                        <li>テーブル追加(RESTとの比較:アンダーフェッチ)</li>
+                    </ol>
+                    <li className='odd:bg-slate-300 even:bg-amber-200'>QueryとMutation</li>
+                    <li className='odd:bg-slate-300 even:bg-amber-100'>Subscription(realtime API)も実装してみる？</li>
+                    <li className='odd:bg-slate-300 even:bg-amber-100'>Tailwind CSSにもっと慣れておく？</li>
+                    <li className='odd:bg-slate-300 even:bg-amber-100'>既存の複数のデータソースを単一のGraphQLエンドポイントで統合してみる？</li>
+                </ul>
+            </section>
+
+            <footer className='mt-10 text-center'>
+                <p className='font-thin'>Go to{' '}
+                    <Link href='https://nextjs-testapp02-blog.netlify.app/' className='text-xl text-sky-500 hover:text-indigo-600'>
+                        itachi-p's Home(仮)
+                    </Link>
+                    &nbsp;※独自ドメイン切り替え予定
+                </p>
             </footer>
         </div>
     );
