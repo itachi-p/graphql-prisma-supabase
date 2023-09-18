@@ -1,6 +1,7 @@
 import { ApolloServer, gql } from 'apollo-server-micro';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+// import prisma from '../../db';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -29,7 +30,7 @@ const resolvers = {
     Query: {
         hello: () => 'Hello World',
         users: async (parent: undefined, args: {}, context: Context) => {
-            return await context.prisma.user.findMany(); // SQLの'SELECT * FROM User;' に相当
+            return await context.prisma.user.findMany();
         },
     },
 };
