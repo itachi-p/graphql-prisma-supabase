@@ -87,7 +87,7 @@ const Home: NextPage = () => {
             <footer className='mt-10 text-center'>
                 <p className='font-thin'>Go to{' '}
                     <Link href='https://nextjs-testapp02-blog.netlify.app/' className='text-xl text-sky-500 hover:text-indigo-600'>
-                        itachi-p's Home(仮)
+                        itachi-p&apos;s Home(仮)
                     </Link>
                     &nbsp;※独自ドメイン切り替え予定
                 </p>
