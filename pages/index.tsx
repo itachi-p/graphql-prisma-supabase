@@ -41,7 +41,7 @@ const Home: NextPage = () => {
                 <h4 className="mt-2 text-md text-amber-600">※DBデータ項目・件数追加予定</h4>
                 {users.map((user: { id: number, name: string; email: string }) => (
                     <ul className='ml-20 list-disc list-inside space-y-4 odd:bg-lime-200 even:bg-indigo-200' key={user.id}>
-                        <li className="mt-5 ml-5 text-medium flex items-center">
+                        <li className="mt-3 ml-5 text-medium flex items-center">
                             <svg className="h-6 w-6 flex-none fill-sky-100 stroke-sky-300 stroke-2">
                                 <circle cx="12" cy="12" r="7" />
                             </svg>
@@ -62,9 +62,10 @@ const Home: NextPage = () => {
                     <div className='rounded border bg-lime-300 p-1'>TypeScript</div>
                     <div className='rounded border bg-lime-300 p-1'>Tailwind CSS</div>
                     <div className='rounded border bg-amber-300 p-1'>Apollo-server</div>
+                    <div className='rounded border bg-amber-300 p-1'>Apollo-client</div>
                     <div className='rounded border bg-amber-300 p-1'>GraphQL</div>
-                    <div className='rounded border bg-amber-300 p-1'>Prisma(ORM)</div>
-                    <div className='rounded border bg-lime-300 p-1'>Supabase(Postgres)</div>
+                    <div className='rounded border bg-sky-300 p-1'>Prisma(ORM)</div>
+                    <div className='rounded border bg-sky-300 p-1'>Supabase(Postgres)</div>
                 </div>
 
                 <p className='mt-5 text-2xl text-sky-600'>今後の実装予定<span className='text-slate-300'>(は未定)</span></p>

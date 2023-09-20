@@ -1,5 +1,3 @@
-//すべてのコンポーネントで Apollo Client が利用できるよう<ApolloProvider>を追加
-
 import type { AppProps } from 'next/app';
 
 // GraphQLのクライアント側ライブラリをインポート
@@ -11,6 +9,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+//すべてのコンポーネントで Apollo Client が利用できるよう<ApolloProvider>を追加
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
